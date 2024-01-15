@@ -1,0 +1,44 @@
+{
+  "name": "clipic-h5",
+  "version": "1.0.0",
+  "description": "移动端图片裁剪工具",
+  "main": "./dist/clipic.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tuao525/clipic-h5/issues.git"
+  },
+  "keywords": [
+    "image",
+    "picture",
+    "clip",
+    "图片裁剪",
+    "头像裁剪"
+  ],
+  "author": "tuao <2250467773@qq.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tuao525/clipic-h5/issues"
+  },
+  "homepage": "https://github.com/tuao525/clipic-h5/issues#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "babel-preset-latest": "^6.24.1",
+    "rollup-plugin-babel": "^3.0.7",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-uglify": "^6.0.2",
+    "rollup-watch": "^4.3.1"
+  },
+  "dependencies": {
+    "rollup": "2.3.1"
+  }
+}
