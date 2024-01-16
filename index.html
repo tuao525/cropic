@@ -3,7 +3,7 @@
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-15 16:44:21
+ * @LastEditTime: 2024-01-16 09:48:19
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +14,7 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Clipic.js</title>
+    <title>cropic.js</title>
     <style>
       body,
       html {
@@ -73,15 +73,15 @@
         />
       </div>
     </section>
-    <script src="./dist/clipic.js"></script>
+    <script src="./dist/cropic.js"></script>
     <script>
-      var clipic = new Clipic()
+      var cropic = new Cropic()
       function chooseImg(event) {
         var files = event.files || event.dataTransfer.files
         var reader = new FileReader()
         reader.readAsDataURL(files[0])
         reader.onload = (e) => {
-          clipic.getImage({
+          cropic.getImage({
             // width: 500,
             // height: 400,
             src: e.target.result,

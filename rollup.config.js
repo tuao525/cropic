@@ -1,3 +1,10 @@
+/*
+ * @Author: 涂澳
+ * @email: 2250467773@qq.com
+ * @Date: 2024-01-15 16:28:00
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2024-01-16 09:46:38
+ */
 import babel from 'rollup-plugin-babel'
 import { uglify } from 'rollup-plugin-uglify'
 import postcss from 'rollup-plugin-postcss'
@@ -5,9 +12,9 @@ export default [
   {
     input: './src/main.js',
     output: {
-      file: './dist/clipic.js',
+      file: './dist/cropic.js',
       format: 'umd',
-      name: 'Clipic'
+      name: 'Cropic'
     },
     plugins: [
       postcss({
@@ -21,9 +28,9 @@ export default [
   {
     input: './src/main.js',
     output: {
-      file: './dist/clipic.min.js',
+      file: './dist/cropic.min.js',
       format: 'umd',
-      name: 'Clipic'
+      name: 'Cropic'
     },
     plugins: [
       postcss({

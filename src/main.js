@@ -1,7 +1,7 @@
 import './style.css'
 import dom from './dom'
 
-class Clipic {
+class Cropic {
   constructor() {
     this.default = {
       width: 500, // 裁剪宽度
@@ -10,27 +10,27 @@ class Clipic {
       ratio: 1,
       encode: 'base64', // 导出格式，支持 base64|blob|file
       type: 'jpeg', // 裁剪后图片的类型，仅支持jpeg/png两种
-      name: 'clipic', // 如果导出格式位file, 则可以填写图片名
+      name: 'crop-picture', // 如果导出格式位file, 则可以填写图片名
       quality: 0.9, // 压缩质量
       buttonText: ['取消', '重置', '完成'], // 底部三个按钮文案,
       buttonColor: ['#e04c4c', '#3680fd', '#23c667']
     }
     this.init() // 初始化，渲染dom跟css
-    this.clipic = this.getId('clipic')
-    this.img1 = this.getId('clipicImg1') // 背景图
-    this.img2 = this.getId('clipicImg2') // 前景图
-    this.frame1 = this.getId('clipicFrame1') // 背景操作框
-    this.frame2 = this.getId('clipicFrame2') // 前景操作框
-    this.cancelBtn = this.getId('clipicCancel') // 取消按钮
-    this.resetBtn = this.getId('clipicReset') // 重置按钮
-    this.confirmBtn = this.getId('clipicConfirm') // 完成按钮
+    this.cropic = this.getId('cropic')
+    this.img1 = this.getId('cropicImg1') // 背景图
+    this.img2 = this.getId('cropicImg2') // 前景图
+    this.frame1 = this.getId('cropicFrame1') // 背景操作框
+    this.frame2 = this.getId('cropicFrame2') // 前景操作框
+    this.cancelBtn = this.getId('cropicCancel') // 取消按钮
+    this.resetBtn = this.getId('cropicReset') // 重置按钮
+    this.confirmBtn = this.getId('cropicConfirm') // 完成按钮
     this.reset = this.reset.bind(this)
     this.done = this.done.bind(this)
     this.cancel = this.cancel.bind(this)
   }
 
   init() {
-    if (!this.getId('clipic')) {
+    if (!this.getId('cropic')) {
       this.createHtml()
     }
   }
@@ -41,8 +41,8 @@ class Clipic {
 
   createHtml() {
     const div = document.createElement('div')
-    div.className = 'clipic-body'
-    div.setAttribute('id', 'clipic')
+    div.className = 'cropic-body'
+    div.setAttribute('id', 'cropic')
     div.innerHTML = dom
     document.body.appendChild(div)
   }
@@ -53,8 +53,8 @@ class Clipic {
     this.rotate = 0 // 旋转
     this.translateX = 0 // 水平偏移
     this.translateY = 0 // 垂直偏移
-    this.clipicWidth = 0 // 计算宽度
-    this.clipicHeight = 0 // 计算高度
+    this.cropicWidth = 0 // 计算宽度
+    this.cropicHeight = 0 // 计算高度
     const defaults = JSON.parse(JSON.stringify(this.default))
     this.options = Object.assign(defaults, options)
     this.cancelBtn.innerHTML = this.options.buttonText[0] //关闭按钮
@@ -71,7 +71,7 @@ class Clipic {
       this.originH = this.img2.height
       this.originRatio = this.originW / this.originH
       this.initSize()
-      this.clipic.style.transform = 'translate(0, 0)'
+      this.cropic.style.transform = 'translate(0, 0)'
       // 图片宽度大于图片高度
       if (this.img1.width > this.img1.height) {
         this.img1.style.height = this.frame1.clientHeight + 'px'
@@ -91,12 +91,12 @@ class Clipic {
       // 使图片居中显示
       if (this.img1.height > this.img1.width) {
         this.translateY = -Math.floor(
-          (this.img1.height - this.options.clipicHeight) / 2
+          (this.img1.height - this.options.cropicHeight) / 2
         )
         this.translateX = 0
       } else {
         this.translateX = -Math.floor(
-          (this.img1.width - this.options.clipicWidth) / 2
+          (this.img1.width - this.options.cropicWidth) / 2
         )
         this.translateY = 0
       }
@@ -104,7 +104,7 @@ class Clipic {
       this.cancelBtn.addEventListener('click', this.cancel)
       this.resetBtn.addEventListener('click', this.reset)
       this.confirmBtn.addEventListener('click', this.done)
-      this.clipic.addEventListener('touchmove', (e) => {
+      this.cropic.addEventListener('touchmove', (e) => {
         e.preventDefault()
         if (e.touches.length > 1) {
           this.setScale(e.touches[0], e.touches[1])
@@ -113,7 +113,7 @@ class Clipic {
         }
         this.setTranslate(e.touches[0])
       })
-      this.clipic.addEventListener('touchend', (e) => {
+      this.cropic.addEventListener('touchend', (e) => {
         this.distance = null
         this.angle = null
         this.moveX = null
@@ -126,44 +126,44 @@ class Clipic {
   // 初始化
   initSize() {
     const body = document.documentElement || document.body
-    let clipicWidth = 0
-    let clipicHeight = 0
+    let cropicWidth = 0
+    let cropicHeight = 0
     let ratio = this.options.width / this.options.height
     if (ratio === 1) {
       if (body.clientHeight > body.clientWidth) {
-        clipicWidth = body.clientWidth - 60
-        clipicHeight = body.clientWidth - 60
+        cropicWidth = body.clientWidth - 60
+        cropicHeight = body.clientWidth - 60
       } else {
-        clipicWidth = body.clientHeight - 60
-        clipicHeight = body.clientHeight - 60
+        cropicWidth = body.clientHeight - 60
+        cropicHeight = body.clientHeight - 60
       }
     } else {
       if (body.clientHeight > body.clientWidth) {
         if (body.clientWidth > this.options.width) {
-          clipicWidth = this.options.width
-          clipicHeight = this.options.height
+          cropicWidth = this.options.width
+          cropicHeight = this.options.height
         } else {
-          clipicWidth = body.clientWidth - 60
-          clipicHeight = (body.clientWidth - 60) / ratio
+          cropicWidth = body.clientWidth - 60
+          cropicHeight = (body.clientWidth - 60) / ratio
         }
       } else {
         if (body.clientHeight > this.options.height) {
-          clipicWidth = this.options.width
-          clipicHeight = this.options.height
+          cropicWidth = this.options.width
+          cropicHeight = this.options.height
         } else {
-          clipicWidth = body.clientHeight - 60
-          clipicHeight = (body.clientHeight - 60) / ratio
+          cropicWidth = body.clientHeight - 60
+          cropicHeight = (body.clientHeight - 60) / ratio
         }
       }
     }
-    this.options.clipicWidth = clipicWidth
-    this.options.clipicHeight = clipicHeight
-    this.options.width = clipicWidth
-    this.options.height = clipicHeight
-    this.frame1.style.width = clipicWidth + 'px'
-    this.frame1.style.height = clipicHeight + 'px'
-    this.frame2.style.width = clipicWidth + 'px'
-    this.frame2.style.height = clipicHeight + 'px'
+    this.options.cropicWidth = cropicWidth
+    this.options.cropicHeight = cropicHeight
+    this.options.width = cropicWidth
+    this.options.height = cropicHeight
+    this.frame1.style.width = cropicWidth + 'px'
+    this.frame1.style.height = cropicHeight + 'px'
+    this.frame2.style.width = cropicWidth + 'px'
+    this.frame2.style.height = cropicHeight + 'px'
   }
 
   setScale(touches1, touches2) {
@@ -212,7 +212,7 @@ class Clipic {
 
   // 关闭按钮
   cancel(eventType) {
-    this.clipic.style.transform = 'translate(0, 100%)'
+    this.cropic.style.transform = 'translate(0, 100%)'
     setTimeout(() => {
       this.img1.style = ''
       this.img1.src = ''
@@ -234,12 +234,12 @@ class Clipic {
     this.rotate = 0
     if (this.img1.height > this.img1.width) {
       this.translateY = -Math.floor(
-        (this.img1.height - this.options.clipicHeight) / 2
+        (this.img1.height - this.options.cropicHeight) / 2
       )
       this.translateX = 0
     } else {
       this.translateX = -Math.floor(
-        (this.img1.width - this.options.clipicWidth) / 2
+        (this.img1.width - this.options.cropicWidth) / 2
       )
       this.translateY = 0
     }
@@ -311,4 +311,4 @@ class Clipic {
     this.cancel('done')
   }
 }
-export default Clipic
+export default Cropic

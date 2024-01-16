@@ -5,7 +5,7 @@
  * @LastEditors: Do not edit
  * @LastEditTime: 2024-01-04 14:56:55
  */
-.clipic-body {
+.cropic-body {
   background: #1c1c1c;
   position: fixed;
   width: 100%;
@@ -25,11 +25,11 @@
   z-index: 99;
   overflow: hidden;
 }
-.clipic-body * {
+.cropic-body * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.clipic-operation-bar {
+.cropic-operation-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -42,11 +42,11 @@
   bottom: 0;
   left: 0;
 }
-.clipic-operation-bar [role='button'] {
+.cropic-operation-bar [role='button'] {
   padding: 15px 20px;
   font-size: 1em;
 }
-.clipic-frame {
+.cropic-frame {
   background: #f2f2f2;
   position: absolute;
   left: 50%;
@@ -55,14 +55,14 @@
   transition: 0.3s;
   border: 2px solid #fff;
 }
-.clipic-frame img {
+.cropic-frame img {
   -webkit-touch-callout: none;
   pointer-events: none;
 }
-.clipic-frame-show {
+.cropic-frame-show {
   overflow: hidden;
 }
-.clipic-frame-show-border1 {
+.cropic-frame-show-border1 {
   position: absolute;
   width: 0.5px;
   height: 100%;
@@ -70,7 +70,7 @@
   top: 0px;
   background-color: #fff;
 }
-.clipic-frame-show-border2 {
+.cropic-frame-show-border2 {
   position: absolute;
   width: 0.5px;
   height: 100%;
@@ -78,7 +78,7 @@
   top: 0px;
   background-color: #fff;
 }
-.clipic-frame-show-border3 {
+.cropic-frame-show-border3 {
   position: absolute;
   width: 100%;
   height: 0.5px;
@@ -86,7 +86,7 @@
   top: 33.33%;
   background-color: #fff;
 }
-.clipic-frame-show-border4 {
+.cropic-frame-show-border4 {
   position: absolute;
   width: 100%;
   height: 0.5px;
@@ -94,16 +94,16 @@
   top: 66.66%;
   background-color: #fff;
 }
-.clipic-cancel {
+.cropic-cancel {
   color: #e04c4c;
 }
-.clipic-reset {
+.cropic-reset {
   color: #3680fd;
 }
-.clipic-confirm {
+.cropic-confirm {
   color: #23c667;
 }
-.clipic-layer {
+.cropic-layer {
   position: fixed;
   width: 100%;
   height: 100%;

@@ -1,8 +1,8 @@
 {
-  "name": "clipic-h5",
+  "name": "crop-picture-h5",
   "version": "1.0.0",
   "description": "移动端图片裁剪工具",
-  "main": "./dist/clipic.js",
+  "main": "./dist/cropic.js",
   "directories": {
     "doc": "docs"
   },
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tuao525/clipic-h5/issues.git"
+    "url": "git+https://github.com/tuao525/cropic/issues.git"
   },
   "keywords": [
     "image",
@@ -24,9 +24,9 @@
   "author": "tuao <2250467773@qq.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/tuao525/clipic-h5/issues"
+    "url": "https://github.com/tuao525/cropic/issues"
   },
-  "homepage": "https://github.com/tuao525/clipic-h5/issues#readme",
+  "homepage": "https://github.com/tuao525/cropic/issues#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",

@@ -3,19 +3,19 @@
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-15 16:26:06
+ * @LastEditTime: 2024-01-16 09:53:31
 -->
 
-# Clipic.js
+# Cropic.js
 
 移动端图片裁剪工具，适用于上传头像并裁剪成指定尺寸，支持导出编码为 base64、blob、file
 
-此插件是基于 https://github.com/teojs/clipic 进行修改、更新
+此插件是基于 https://github.com/teojs/cropic 进行修改、更新
 
 ## npm 方式
 
 ```bath
-$ npm install clipic
+$ npm install cropic
 ```
 
 在 vue 项目里使用
@@ -27,8 +27,8 @@ $ npm install clipic
   <input type="file" name="file" accept="image/*" @change="uploadImg" />
 </template>
 <script>
-  import Clipic from 'clipic'
-  const clipic = new Clipic()
+  import Cropic from 'cropic'
+  const cropic = new Cropic()
   export default {
     data () {
       return {
@@ -41,7 +41,7 @@ $ npm install clipic
         const reader = new FileReader()
         reader.readAsDataURL(files[0])
         reader.onload = img => {
-          clipic.getImage({
+          cropic.getImage({
             width: 500,
             height: 400,
             src: img.target.result,
@@ -61,10 +61,10 @@ $ npm install clipic
 
 ```html
 <!-- xxx.html -->
-<script src="https://unpkg.com/clipic/dist/clipic.min.js"></script>
+<script src="https://unpkg.com/cropic/dist/cropic.min.js"></script>
 <script>
-  var clipic = new Clipic()
-  clipic.getImage({
+  var cropic = new Cropic()
+  cropic.getImage({
     // width: 500,
     // height: 400,
     src: e.target.result,
@@ -94,7 +94,7 @@ $ npm install clipic
 | quality     | Number |      | 0.9                               | 压缩质量(0.1-1)                             |
 | buttonText  | Array  |      | ['取消', '重置', '完成']          | 底部三个按钮文本                            |
 | buttonColor | Array  |      | ['#e04c4c', '#3680fd', '#23c667'] | 底部三个按钮文本的颜色                      |
-| name        | String |      | clipic                            | 如果导出编码为 file，则可填图片名           |
+| name        | String |      | cropic                            | 如果导出编码为 file，则可填图片名           |
 | encode      | String |      | base64                            | 导出的格式，支持 base64、blob、file         |
 
 ## 事件说明
