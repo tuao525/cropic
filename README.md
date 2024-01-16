@@ -3,7 +3,7 @@
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-16 10:19:45
+ * @LastEditTime: 2024-01-16 14:19:00
 -->
 
 # Cropic.js
@@ -94,6 +94,7 @@ $ npm install cropic
 | quality     | Number |      | 0.9                               | 压缩质量(0.1-1)                             |
 | buttonText  | Array  |      | ['取消', '重置', '完成']          | 底部三个按钮文本                            |
 | buttonColor | Array  |      | ['#e04c4c', '#3680fd', '#23c667'] | 底部三个按钮文本的颜色                      |
+| buttonSize  | String |      | 12                                | 底部三个按钮文本的大小                      |
 | name        | String |      | cropic                            | 如果导出编码为 file，则可填图片名           |
 | encode      | String |      | base64                            | 导出的格式，支持 base64、blob、file         |
 

@@ -74,7 +74,8 @@
         name: 'crop-picture', // 如果导出格式位file, 则可以填写图片名
         quality: 0.9, // 压缩质量
         buttonText: ['取消', '重置', '完成'], // 底部三个按钮文案,
-        buttonColor: ['#e04c4c', '#3680fd', '#23c667']
+        buttonColor: ['#e04c4c', '#3680fd', '#23c667'], // 底部三个按钮颜色,
+        buttonSize: 12 // 底部三个按钮大小
       };
       this.init(); // 初始化，渲染dom跟css
       this.cropic = this.getId('cropic');
@@ -133,6 +134,9 @@
         this.cancelBtn.style.color = this.options.buttonColor[0]; //关闭按钮颜色
         this.resetBtn.style.color = this.options.buttonColor[1]; //重置按钮颜色
         this.confirmBtn.style.color = this.options.buttonColor[2]; //提交按钮颜色
+        this.cancelBtn.style.fontSize = this.options.buttonSize + 'px'; //关闭按钮大小
+        this.resetBtn.style.fontSize = this.options.buttonSize + 'px'; //重置按钮大小
+        this.confirmBtn.style.fontSize = this.options.buttonSize + 'px'; //提交按钮大小
         this.img1.src = this.options.src;
         this.img2.src = this.options.src;
         var tempImage = new Image();
