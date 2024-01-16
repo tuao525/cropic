@@ -1,5 +1,5 @@
 {
-  "name": "crop-picture-h5",
+  "name": "cropic",
   "version": "1.0.0",
   "description": "移动端图片裁剪工具",
   "main": "./dist/cropic.js",
