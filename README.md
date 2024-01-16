@@ -3,7 +3,7 @@
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-16 14:19:00
+ * @LastEditTime: 2024-01-16 14:48:38
 -->
 
 # Cropic.js
@@ -45,6 +45,13 @@ $ npm install cropic
             width: 500,
             height: 400,
             src: img.target.result,
+            name: 'cropic',
+            encode: 'base64', // 支持 base64、blob、file
+            type: 'png',
+            // quality: '0.9', // 导出图片的质量
+            // buttonText: ['Cancel', 'Reset', 'Done'],
+            // buttonColor: ['#fff', '#3680fd', '#23c667'],
+            // buttonSize: 12,
             onDone: base64 => {
               this.base64 = base64
             }
@@ -55,6 +62,54 @@ $ npm install cropic
     }
   }
 </script>
+```
+
+在 react 项目里使用
+
+```tsx
+import React, { useState } from 'react'
+import Cropic from 'cropic'
+
+export default () => {
+  const [src, setSrc] = useState('')
+
+  const cropBtn = (event) => {
+    const cropic = new Cropic()
+    const files = event?.target.files
+    const reader = new FileReader()
+    console.log('event', event)
+    reader.readAsDataURL(files[0])
+    reader.onload = (img) => {
+      cropic.getImage({
+        // width: 500,
+        // height: 500,
+        src: img?.target?.result,
+        name: 'cropic',
+        encode: 'base64', // 支持 base64、blob、file
+        type: 'png',
+        // quality: '0.9', // 导出图片的质量
+        // buttonText: ['Cancel', 'Reset', 'Done'],
+        // buttonColor: ['#fff', '#3680fd', '#23c667'],
+        // buttonSize: 12,
+        onDone: (base64) => {
+          setSrc(base64)
+        },
+        onCancel: function () {
+          console.log('取消裁剪')
+        }
+      })
+    }
+  }
+  return (
+    <div>
+      <img
+        src={src}
+        style={{ width: '100px', height: '100px', borderRadius: '50%' }}
+      />
+      <input type="file" name="file" accept="image/*" onChange={cropBtn} />
+    </div>
+  )
+}
 ```
 
 ## cdn 方式
@@ -68,11 +123,13 @@ $ npm install cropic
     // width: 500,
     // height: 400,
     src: e.target.result,
-    // buttonText: ['Cancel', 'Reset', 'Done'],
-    name: 'test',
+    name: 'cropic',
     encode: 'base64', // 支持 base64、blob、file
     type: 'png',
     // quality: '0.9', // 导出图片的质量
+    // buttonText: ['Cancel', 'Reset', 'Done'],
+    // buttonColor: ['#fff', '#3680fd', '#23c667'],
+    // buttonSize: 12,
     onDone: function (e) {
       document.getElementById('previewImg').src = e
     },
