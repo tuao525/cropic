@@ -1,16 +1,16 @@
 <!--
- * @Author: 涂澳
+ * @Author: ao.tu
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-16 14:48:38
+ * @LastEditTime: 2024-01-17 15:39:29
 -->
 
 # Cropic.js
 
 移动端 h5 头像裁剪工具
 
-此插件是基于 https://github.com/teojs/cropic 进行修改、更新
+此插件是根据微信头像裁剪进行演变，基于[Clipic](https://github.com/teojs/cropic)插件进行修改、更新
 
 ## npm 方式
 

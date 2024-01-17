@@ -1,9 +1,9 @@
 /*
- * @Author: 涂澳
+ * @Author: ao.tu
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-04 14:56:55
+ * @LastEditTime: 2024-01-17 17:34:12
  */
 .cropic-body {
   background: #1c1c1c;
@@ -25,6 +25,13 @@
   z-index: 99;
   overflow: hidden;
 }
+.shady-plot {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #1c1c1c;
+  z-index: 999;
+}
 .cropic-body * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -43,11 +50,11 @@
   left: 0;
 }
 .cropic-operation-bar [role='button'] {
-  padding: 15px 20px;
+  padding: 30px 20px;
   font-size: 1em;
 }
 .cropic-frame {
-  background: #f2f2f2;
+  /* background: #f2f2f2; */
   position: absolute;
   left: 50%;
   top: 50%;
@@ -61,6 +68,9 @@
 }
 .cropic-frame-show {
   overflow: hidden;
+}
+.cropic-frame-show-border {
+  display: none;
 }
 .cropic-frame-show-border1 {
   position: absolute;
@@ -112,4 +122,41 @@
   background: rgba(0, 0, 0, 0.8);
   pointer-events: none;
   transform: translate3D(0, 0, 0);
+}
+.cropicFadeOut {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transform: translate3D(0, 0, 0);
+  animation: cropicFadeOut 0.5s ease-in-out forwards;
+}
+.border-line {
+  opacity: 0;
+}
+.borderLinefadeIn {
+  opacity: 1;
+}
+.borderLinefadeOut {
+  animation: borderLinefadeOut 0.5s ease-in-out forwards;
+}
+@keyframes cropicFadeOut {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes borderLinefadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }

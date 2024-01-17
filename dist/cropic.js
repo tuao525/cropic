@@ -31,10 +31,10 @@
     }
   }
 
-  var css_248z = ".cropic-body{background:#1c1c1c;position:fixed;width:100%;height:100%;top:0;left:0;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);-webkit-transition:.4s;-o-transition:.4s;transition:.4s;-webkit-touch-callout:none;-webkit-user-select:none;z-index:99;overflow:hidden}.cropic-body,.cropic-body *{-webkit-box-sizing:border-box;box-sizing:border-box}.cropic-operation-bar{display:-webkit-box;display:-ms-flexbox;display:flex;color:#f2f2f2;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;position:absolute;width:100%;bottom:0;left:0}.cropic-operation-bar [role=button]{padding:15px 20px;font-size:1em}.cropic-frame{background:#f2f2f2;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:.3s;border:2px solid #fff}.cropic-frame img{-webkit-touch-callout:none;pointer-events:none}.cropic-frame-show{overflow:hidden}.cropic-frame-show-border1{left:33.33%}.cropic-frame-show-border1,.cropic-frame-show-border2{position:absolute;width:.5px;height:100%;top:0;background-color:#fff}.cropic-frame-show-border2{left:66.66%}.cropic-frame-show-border3{top:33.33%}.cropic-frame-show-border3,.cropic-frame-show-border4{position:absolute;width:100%;height:.5px;left:0;background-color:#fff}.cropic-frame-show-border4{top:66.66%}.cropic-cancel{color:#e04c4c}.cropic-reset{color:#3680fd}.cropic-confirm{color:#23c667}.cropic-layer{position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.8);pointer-events:none;transform:translateZ(0)}";
+  var css_248z = ".cropic-body{top:0;left:0;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);-webkit-transition:.4s;-o-transition:.4s;transition:.4s;-webkit-touch-callout:none;-webkit-user-select:none;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:99;overflow:hidden}.cropic-body,.shady-plot{background:#1c1c1c;position:fixed;width:100%;height:100%}.shady-plot{z-index:999}.cropic-body *{-webkit-box-sizing:border-box;box-sizing:border-box}.cropic-operation-bar{display:-webkit-box;display:-ms-flexbox;display:flex;color:#f2f2f2;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;position:absolute;width:100%;bottom:0;left:0}.cropic-operation-bar [role=button]{padding:30px 20px;font-size:1em}.cropic-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:.3s;border:2px solid #fff}.cropic-frame img{-webkit-touch-callout:none;pointer-events:none}.cropic-frame-show{overflow:hidden}.cropic-frame-show-border{display:none}.cropic-frame-show-border1{left:33.33%}.cropic-frame-show-border1,.cropic-frame-show-border2{position:absolute;width:.5px;height:100%;top:0;background-color:#fff}.cropic-frame-show-border2{left:66.66%}.cropic-frame-show-border3{top:33.33%}.cropic-frame-show-border3,.cropic-frame-show-border4{position:absolute;width:100%;height:.5px;left:0;background-color:#fff}.cropic-frame-show-border4{top:66.66%}.cropic-cancel{color:#e04c4c}.cropic-reset{color:#3680fd}.cropic-confirm{color:#23c667}.cropic-layer,.cropicFadeOut{position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.8);pointer-events:none;transform:translateZ(0)}.cropicFadeOut{display:block;animation:cropicFadeOut .5s ease-in-out forwards}.border-line{opacity:0}.borderLinefadeIn{opacity:1}.borderLinefadeOut{animation:borderLinefadeOut .5s ease-in-out forwards}@keyframes cropicFadeOut{0%{opacity:0}to{opacity:1}}@keyframes borderLinefadeOut{0%{opacity:1}to{opacity:0}}";
   styleInject(css_248z);
 
-  var dom = "\n    <div class=\"cropic-frame\" id=\"cropicFrame1\"><img id=\"cropicImg1\"></div>\n    <div class=\"cropic-layer\"></div>\n    <div class=\"cropic-frame cropic-frame-show\" id=\"cropicFrame2\">\n    <img id=\"cropicImg2\">\n    <div class=\"cropic-frame-show-border1\"></div>\n    <div class=\"cropic-frame-show-border2\"></div>\n    <div class=\"cropic-frame-show-border3\"></div>\n    <div class=\"cropic-frame-show-border4\"></div>\n    </div>\n    <div class=\"cropic-operation-bar\">\n      <div class=\"cropic-cancel\" id=\"cropicCancel\" role=\"button\">\u53D6\u6D88</div>\n      <div class=\"cropic-reset\" id=\"cropicReset\" role=\"button\">\u91CD\u7F6E</div>\n      <div class=\"cropic-confirm\" id=\"cropicConfirm\" role=\"button\">\u5B8C\u6210</div>\n    </div>\n  ";
+  var dom = "\n  <div class='shady-plot' id='shadyPlot'></div>\n    <div class=\"cropic-frame\" id=\"cropicFrame1\"><img id=\"cropicImg1\"></div>\n    <div class=\"cropic-layer\" id=\"cropicLayer\"></div>\n    <div class=\"cropic-frame cropic-frame-show\" id=\"cropicFrame2\">\n      <img id=\"cropicImg2\">\n      <div id=\"borderLine\" class=\"border-line\">\n        <div class=\"cropic-frame-show-border1\"></div>\n        <div class=\"cropic-frame-show-border2\"></div>\n        <div class=\"cropic-frame-show-border3\"></div>\n        <div class=\"cropic-frame-show-border4\"></div>\n      </div>\n    </div>\n    <div class=\"cropic-operation-bar\">\n      <div class=\"cropic-cancel\" id=\"cropicCancel\" role=\"button\">\u53D6\u6D88</div>\n      <div class=\"cropic-reset\" id=\"cropicReset\" role=\"button\">\u91CD\u7F6E</div>\n      <div class=\"cropic-confirm\" id=\"cropicConfirm\" role=\"button\">\u5B8C\u6210</div>\n    </div>\n  ";
 
   var classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -86,6 +86,9 @@
       this.cancelBtn = this.getId('cropicCancel'); // 取消按钮
       this.resetBtn = this.getId('cropicReset'); // 重置按钮
       this.confirmBtn = this.getId('cropicConfirm'); // 完成按钮
+      this.borderLine = this.getId('borderLine'); // 九宫格线
+      this.cropicLayer = this.getId('cropicLayer'); // 图片背景图
+      this.shadyPlot = this.getId('shadyPlot'); // 图片背景图
       this.reset = this.reset.bind(this);
       this.done = this.done.bind(this);
       this.cancel = this.cancel.bind(this);
@@ -147,26 +150,37 @@
           _this.initSize();
           _this.cropic.style.transform = 'translate(0, 0)';
           // 图片宽度大于图片高度
-          if (_this.img1.width > _this.img1.height) {
-            _this.img1.style.height = _this.frame1.clientHeight + 'px';
-            _this.img2.style.height = _this.frame1.clientHeight + 'px';
-            _this.img1.style.width = _this.img1.width * (_this.frame1.clientHeight / _this.img1.height) + 'px';
-            _this.img2.style.width = _this.img1.width * (_this.frame1.clientHeight / _this.img1.height) + 'px';
-          } else {
-            _this.img1.style.width = _this.frame1.clientWidth + 'px';
-            _this.img2.style.width = _this.frame1.clientWidth + 'px';
-            _this.img1.style.height = _this.img1.height * (_this.frame1.clientWidth / _this.img1.width) + 'px';
-            _this.img2.style.height = _this.img1.height * (_this.frame1.clientWidth / _this.img1.width) + 'px';
-          }
-          // 使图片居中显示
-          if (_this.img1.height > _this.img1.width) {
-            _this.translateY = -Math.floor((_this.img1.height - _this.options.cropicHeight) / 2);
-            _this.translateX = 0;
-          } else {
-            _this.translateX = -Math.floor((_this.img1.width - _this.options.cropicWidth) / 2);
-            _this.translateY = 0;
-          }
-          _this.setTransform();
+          setTimeout(function () {
+            var x = 0,
+                y = 0;
+            if (_this.img1.width > _this.img1.height) {
+              _this.img1.style.height = _this.frame1.clientHeight + 'px';
+              _this.img2.style.height = _this.frame1.clientHeight + 'px';
+              _this.img1.style.width = _this.img1.width * (_this.frame1.clientHeight / _this.img1.height) + 'px';
+              _this.img2.style.width = _this.img1.width * (_this.frame1.clientHeight / _this.img1.height) + 'px';
+            } else {
+              _this.img1.style.width = _this.frame1.clientWidth + 'px';
+              _this.img2.style.width = _this.frame1.clientWidth + 'px';
+              _this.img1.style.height = _this.img1.height * (_this.frame1.clientWidth / _this.img1.width) + 'px';
+              _this.img2.style.height = _this.img1.height * (_this.frame1.clientWidth / _this.img1.width) + 'px';
+            }
+            // 使图片居中显示
+            if (_this.img1.height > _this.img1.width) {
+              _this.translateY = -Math.floor((_this.img1.height - _this.options.cropicHeight) / 2);
+              _this.translateX = 0;
+              x = 0;
+              y = -Math.floor((_this.img1.height - _this.options.cropicHeight) / 2);
+            } else {
+              _this.translateX = -Math.floor((_this.img1.width - _this.options.cropicWidth) / 2);
+              _this.translateY = 0;
+              x = -Math.floor((_this.img1.width - _this.options.cropicWidth) / 2);
+              y = 0;
+            }
+            _this.setTransform(x, y);
+          }, 300);
+          setTimeout(function () {
+            _this.shadyPlot.style.display = 'none';
+          }, 310);
           _this.cancelBtn.addEventListener('click', _this.cancel);
           _this.resetBtn.addEventListener('click', _this.reset);
           _this.confirmBtn.addEventListener('click', _this.done);
@@ -178,12 +192,20 @@
               return;
             }
             _this.setTranslate(e.touches[0]);
+            _this.cropicLayer.style.display = 'none';
+            _this.borderLine.setAttribute('class', 'borderLinefadeIn');
+            _this.cropicLayer.setAttribute('class', 'cropic-layer');
           });
           _this.cropic.addEventListener('touchend', function (e) {
             _this.distance = null;
             _this.angle = null;
             _this.moveX = null;
             _this.moveY = null;
+            setTimeout(function () {
+              _this.cropicLayer.style.display = 'block';
+              _this.borderLine.setAttribute('class', 'borderLinefadeOut');
+              _this.cropicLayer.setAttribute('class', 'cropicFadeOut');
+            }, 300);
           });
         };
         tempImage.src = this.options.src;
@@ -233,6 +255,7 @@
         this.frame1.style.height = cropicHeight + 'px';
         this.frame2.style.width = cropicWidth + 'px';
         this.frame2.style.height = cropicHeight + 'px';
+        this.cropicLayer.style.display = 'block';
       }
     }, {
       key: 'setScale',
@@ -278,8 +301,14 @@
 
     }, {
       key: 'setTransform',
-      value: function setTransform() {
-        var transform = 'translate(' + this.translateX + 'px, ' + this.translateY + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
+      value: function setTransform(x, y) {
+        var transform = '';
+        console.log('x', x, y);
+        if (x || y) {
+          transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
+        } else {
+          transform = 'translate(' + this.translateX + 'px, ' + this.translateY + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
+        }
         this.img1.style.transform = transform;
         this.img2.style.transform = transform;
       }
@@ -304,6 +333,7 @@
         this.cancelBtn.removeEventListener('click', this.cancel);
         this.resetBtn.removeEventListener('click', this.reset);
         this.confirmBtn.removeEventListener('click', this.done, true);
+        this.shadyPlot.style.display = 'block';
       }
 
       // 重置按钮
@@ -339,7 +369,7 @@
         canvas.width = this.options.width;
         canvas.height = this.options.height;
         var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = '#000';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         var drawImageW = void 0;
         var drawImageH = void 0;

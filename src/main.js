@@ -25,6 +25,9 @@ class Cropic {
     this.cancelBtn = this.getId('cropicCancel') // 取消按钮
     this.resetBtn = this.getId('cropicReset') // 重置按钮
     this.confirmBtn = this.getId('cropicConfirm') // 完成按钮
+    this.borderLine = this.getId('borderLine') // 九宫格线
+    this.cropicLayer = this.getId('cropicLayer') // 图片背景图
+    this.shadyPlot = this.getId('shadyPlot') // 图片背景图
     this.reset = this.reset.bind(this)
     this.done = this.done.bind(this)
     this.cancel = this.cancel.bind(this)
@@ -77,34 +80,49 @@ class Cropic {
       this.initSize()
       this.cropic.style.transform = 'translate(0, 0)'
       // 图片宽度大于图片高度
-      if (this.img1.width > this.img1.height) {
-        this.img1.style.height = this.frame1.clientHeight + 'px'
-        this.img2.style.height = this.frame1.clientHeight + 'px'
-        this.img1.style.width =
-          this.img1.width * (this.frame1.clientHeight / this.img1.height) + 'px'
-        this.img2.style.width =
-          this.img1.width * (this.frame1.clientHeight / this.img1.height) + 'px'
-      } else {
-        this.img1.style.width = this.frame1.clientWidth + 'px'
-        this.img2.style.width = this.frame1.clientWidth + 'px'
-        this.img1.style.height =
-          this.img1.height * (this.frame1.clientWidth / this.img1.width) + 'px'
-        this.img2.style.height =
-          this.img1.height * (this.frame1.clientWidth / this.img1.width) + 'px'
-      }
-      // 使图片居中显示
-      if (this.img1.height > this.img1.width) {
-        this.translateY = -Math.floor(
-          (this.img1.height - this.options.cropicHeight) / 2
-        )
-        this.translateX = 0
-      } else {
-        this.translateX = -Math.floor(
-          (this.img1.width - this.options.cropicWidth) / 2
-        )
-        this.translateY = 0
-      }
-      this.setTransform()
+      setTimeout(() => {
+        let x = 0,
+          y = 0
+        if (this.img1.width > this.img1.height) {
+          this.img1.style.height = this.frame1.clientHeight + 'px'
+          this.img2.style.height = this.frame1.clientHeight + 'px'
+          this.img1.style.width =
+            this.img1.width * (this.frame1.clientHeight / this.img1.height) +
+            'px'
+          this.img2.style.width =
+            this.img1.width * (this.frame1.clientHeight / this.img1.height) +
+            'px'
+        } else {
+          this.img1.style.width = this.frame1.clientWidth + 'px'
+          this.img2.style.width = this.frame1.clientWidth + 'px'
+          this.img1.style.height =
+            this.img1.height * (this.frame1.clientWidth / this.img1.width) +
+            'px'
+          this.img2.style.height =
+            this.img1.height * (this.frame1.clientWidth / this.img1.width) +
+            'px'
+        }
+        // 使图片居中显示
+        if (this.img1.height > this.img1.width) {
+          this.translateY = -Math.floor(
+            (this.img1.height - this.options.cropicHeight) / 2
+          )
+          this.translateX = 0
+          x = 0
+          y = -Math.floor((this.img1.height - this.options.cropicHeight) / 2)
+        } else {
+          this.translateX = -Math.floor(
+            (this.img1.width - this.options.cropicWidth) / 2
+          )
+          this.translateY = 0
+          x = -Math.floor((this.img1.width - this.options.cropicWidth) / 2)
+          y = 0
+        }
+        this.setTransform(x, y)
+      }, 300)
+      setTimeout(() => {
+        this.shadyPlot.style.display = 'none'
+      }, 310)
       this.cancelBtn.addEventListener('click', this.cancel)
       this.resetBtn.addEventListener('click', this.reset)
       this.confirmBtn.addEventListener('click', this.done)
@@ -116,12 +134,20 @@ class Cropic {
           return
         }
         this.setTranslate(e.touches[0])
+        this.cropicLayer.style.display = 'none'
+        this.borderLine.setAttribute('class', 'borderLinefadeIn')
+        this.cropicLayer.setAttribute('class', 'cropic-layer')
       })
       this.cropic.addEventListener('touchend', (e) => {
         this.distance = null
         this.angle = null
         this.moveX = null
         this.moveY = null
+        setTimeout(() => {
+          this.cropicLayer.style.display = 'block'
+          this.borderLine.setAttribute('class', 'borderLinefadeOut')
+          this.cropicLayer.setAttribute('class', 'cropicFadeOut')
+        }, 300)
       })
     }
     tempImage.src = this.options.src
@@ -168,6 +194,7 @@ class Cropic {
     this.frame1.style.height = cropicHeight + 'px'
     this.frame2.style.width = cropicWidth + 'px'
     this.frame2.style.height = cropicHeight + 'px'
+    this.cropicLayer.style.display = 'block'
   }
 
   setScale(touches1, touches2) {
@@ -208,8 +235,14 @@ class Cropic {
   }
 
   // 图片移动
-  setTransform() {
-    const transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale}) rotate(${this.rotate}deg)`
+  setTransform(x, y) {
+    let transform = ''
+    console.log('x', x, y)
+    if (x || y) {
+      transform = `translate(${x}px, ${y}px) scale(${this.scale}) rotate(${this.rotate}deg)`
+    } else {
+      transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale}) rotate(${this.rotate}deg)`
+    }
     this.img1.style.transform = transform
     this.img2.style.transform = transform
   }
@@ -229,6 +262,7 @@ class Cropic {
     this.cancelBtn.removeEventListener('click', this.cancel)
     this.resetBtn.removeEventListener('click', this.reset)
     this.confirmBtn.removeEventListener('click', this.done, true)
+    this.shadyPlot.style.display = 'block'
   }
 
   // 重置按钮
@@ -262,7 +296,7 @@ class Cropic {
     canvas.width = this.options.width
     canvas.height = this.options.height
     const ctx = canvas.getContext('2d')
-    ctx.fillStyle = '#fff'
+    ctx.fillStyle = '#000'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     let drawImageW
     let drawImageH

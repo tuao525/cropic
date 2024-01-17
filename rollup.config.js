@@ -1,9 +1,9 @@
 /*
- * @Author: 涂澳
+ * @Author: ao.tu
  * @email: 2250467773@qq.com
  * @Date: 2024-01-15 16:28:00
  * @LastEditors: Do not edit
- * @LastEditTime: 2024-01-16 09:46:38
+ * @LastEditTime: 2024-01-17 15:40:06
  */
 import babel from 'rollup-plugin-babel'
 import { uglify } from 'rollup-plugin-uglify'
