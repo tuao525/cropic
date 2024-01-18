@@ -1,6 +1,6 @@
 {
   "name": "cropic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "移动端图片裁剪工具",
   "main": "./dist/cropic.js",
   "directories": {

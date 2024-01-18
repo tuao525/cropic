@@ -1,4 +1,11 @@
 /*
+ * @Author: 涂澳
+ * @email: 2250467773@qq.com
+ * @Date: 2024-01-17 14:44:41
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2024-01-18 16:29:03
+ */
+/*
  * @Author: ao.tu
  * @email: 2250467773@qq.com
  * @Date: 2024-01-04 10:53:07
@@ -159,4 +166,8 @@
   100% {
     opacity: 0;
   }
+}
+.rotate-img {
+  width: 10px;
+  height: 10px;
 }

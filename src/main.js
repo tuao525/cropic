@@ -81,8 +81,6 @@ class Cropic {
       this.cropic.style.transform = 'translate(0, 0)'
       // 图片宽度大于图片高度
       setTimeout(() => {
-        let x = 0,
-          y = 0
         if (this.img1.width > this.img1.height) {
           this.img1.style.height = this.frame1.clientHeight + 'px'
           this.img2.style.height = this.frame1.clientHeight + 'px'
@@ -108,17 +106,13 @@ class Cropic {
             (this.img1.height - this.options.cropicHeight) / 2
           )
           this.translateX = 0
-          x = 0
-          y = -Math.floor((this.img1.height - this.options.cropicHeight) / 2)
         } else {
           this.translateX = -Math.floor(
             (this.img1.width - this.options.cropicWidth) / 2
           )
           this.translateY = 0
-          x = -Math.floor((this.img1.width - this.options.cropicWidth) / 2)
-          y = 0
         }
-        this.setTransform(x, y)
+        this.setTransform()
       }, 300)
       setTimeout(() => {
         this.shadyPlot.style.display = 'none'
@@ -143,6 +137,44 @@ class Cropic {
         this.angle = null
         this.moveX = null
         this.moveY = null
+
+        const img1 = this.img1.getBoundingClientRect()
+        const frame1 = this.frame1.getBoundingClientRect()
+
+        if (img1.top >= frame1.top) {
+          if (this.scale === 1) {
+            this.translateY = 0
+          } else {
+            this.translateY = (img1.height - this.img1.height) / 2
+          }
+        }
+        if (img1.bottom <= frame1.bottom) {
+          if (this.scale === 1) {
+            this.translateY = -(this.img1.height - frame1.height)
+          } else {
+            this.translateY = -(
+              img1.height -
+              frame1.height -
+              (img1.height - this.img1.height) / 2
+            )
+          }
+        }
+        if (img1.left >= frame1.left) {
+          if (this.scale === 1) {
+            this.translateX = 0
+          } else {
+            this.translateX = (img1.width - this.img1.width) / 2
+          }
+        }
+        if (img1.right <= frame1.right) {
+          if (this.scale === 1) {
+            this.translateX = 0
+          } else {
+            this.translateX = -(img1.width - this.img1.width) / 2
+          }
+        }
+        this.setTransform()
+
         setTimeout(() => {
           this.cropicLayer.style.display = 'block'
           this.borderLine.setAttribute('class', 'borderLinefadeOut')
@@ -235,14 +267,8 @@ class Cropic {
   }
 
   // 图片移动
-  setTransform(x, y) {
-    let transform = ''
-    console.log('x', x, y)
-    if (x || y) {
-      transform = `translate(${x}px, ${y}px) scale(${this.scale}) rotate(${this.rotate}deg)`
-    } else {
-      transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale}) rotate(${this.rotate}deg)`
-    }
+  setTransform() {
+    let transform = `translate(${this.translateX}px, ${this.translateY}px) scale(${this.scale}) rotate(${this.rotate}deg)`
     this.img1.style.transform = transform
     this.img2.style.transform = transform
   }

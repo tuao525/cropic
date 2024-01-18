@@ -31,7 +31,7 @@
     }
   }
 
-  var css_248z = ".cropic-body{top:0;left:0;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);-webkit-transition:.4s;-o-transition:.4s;transition:.4s;-webkit-touch-callout:none;-webkit-user-select:none;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:99;overflow:hidden}.cropic-body,.shady-plot{background:#1c1c1c;position:fixed;width:100%;height:100%}.shady-plot{z-index:999}.cropic-body *{-webkit-box-sizing:border-box;box-sizing:border-box}.cropic-operation-bar{display:-webkit-box;display:-ms-flexbox;display:flex;color:#f2f2f2;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;position:absolute;width:100%;bottom:0;left:0}.cropic-operation-bar [role=button]{padding:30px 20px;font-size:1em}.cropic-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:.3s;border:2px solid #fff}.cropic-frame img{-webkit-touch-callout:none;pointer-events:none}.cropic-frame-show{overflow:hidden}.cropic-frame-show-border{display:none}.cropic-frame-show-border1{left:33.33%}.cropic-frame-show-border1,.cropic-frame-show-border2{position:absolute;width:.5px;height:100%;top:0;background-color:#fff}.cropic-frame-show-border2{left:66.66%}.cropic-frame-show-border3{top:33.33%}.cropic-frame-show-border3,.cropic-frame-show-border4{position:absolute;width:100%;height:.5px;left:0;background-color:#fff}.cropic-frame-show-border4{top:66.66%}.cropic-cancel{color:#e04c4c}.cropic-reset{color:#3680fd}.cropic-confirm{color:#23c667}.cropic-layer,.cropicFadeOut{position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.8);pointer-events:none;transform:translateZ(0)}.cropicFadeOut{display:block;animation:cropicFadeOut .5s ease-in-out forwards}.border-line{opacity:0}.borderLinefadeIn{opacity:1}.borderLinefadeOut{animation:borderLinefadeOut .5s ease-in-out forwards}@keyframes cropicFadeOut{0%{opacity:0}to{opacity:1}}@keyframes borderLinefadeOut{0%{opacity:1}to{opacity:0}}";
+  var css_248z = ".cropic-body{top:0;left:0;-webkit-transform:translateY(100%);-ms-transform:translateY(100%);transform:translateY(100%);-webkit-transition:.4s;-o-transition:.4s;transition:.4s;-webkit-touch-callout:none;-webkit-user-select:none;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:99;overflow:hidden}.cropic-body,.shady-plot{background:#1c1c1c;position:fixed;width:100%;height:100%}.shady-plot{z-index:999}.cropic-body *{-webkit-box-sizing:border-box;box-sizing:border-box}.cropic-operation-bar{display:-webkit-box;display:-ms-flexbox;display:flex;color:#f2f2f2;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;position:absolute;width:100%;bottom:0;left:0}.cropic-operation-bar [role=button]{padding:30px 20px;font-size:1em}.cropic-frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);transition:.3s;border:2px solid #fff}.cropic-frame img{-webkit-touch-callout:none;pointer-events:none}.cropic-frame-show{overflow:hidden}.cropic-frame-show-border{display:none}.cropic-frame-show-border1{left:33.33%}.cropic-frame-show-border1,.cropic-frame-show-border2{position:absolute;width:.5px;height:100%;top:0;background-color:#fff}.cropic-frame-show-border2{left:66.66%}.cropic-frame-show-border3{top:33.33%}.cropic-frame-show-border3,.cropic-frame-show-border4{position:absolute;width:100%;height:.5px;left:0;background-color:#fff}.cropic-frame-show-border4{top:66.66%}.cropic-cancel{color:#e04c4c}.cropic-reset{color:#3680fd}.cropic-confirm{color:#23c667}.cropic-layer,.cropicFadeOut{position:fixed;width:100%;height:100%;top:0;left:0;background:rgba(0,0,0,.8);pointer-events:none;transform:translateZ(0)}.cropicFadeOut{display:block;animation:cropicFadeOut .5s ease-in-out forwards}.border-line{opacity:0}.borderLinefadeIn{opacity:1}.borderLinefadeOut{animation:borderLinefadeOut .5s ease-in-out forwards}@keyframes cropicFadeOut{0%{opacity:0}to{opacity:1}}@keyframes borderLinefadeOut{0%{opacity:1}to{opacity:0}}.rotate-img{width:10px;height:10px}";
   styleInject(css_248z);
 
   var dom = "\n  <div class='shady-plot' id='shadyPlot'></div>\n    <div class=\"cropic-frame\" id=\"cropicFrame1\"><img id=\"cropicImg1\"></div>\n    <div class=\"cropic-layer\" id=\"cropicLayer\"></div>\n    <div class=\"cropic-frame cropic-frame-show\" id=\"cropicFrame2\">\n      <img id=\"cropicImg2\">\n      <div id=\"borderLine\" class=\"border-line\">\n        <div class=\"cropic-frame-show-border1\"></div>\n        <div class=\"cropic-frame-show-border2\"></div>\n        <div class=\"cropic-frame-show-border3\"></div>\n        <div class=\"cropic-frame-show-border4\"></div>\n      </div>\n    </div>\n    <div class=\"cropic-operation-bar\">\n      <div class=\"cropic-cancel\" id=\"cropicCancel\" role=\"button\">\u53D6\u6D88</div>\n      <div class=\"cropic-reset\" id=\"cropicReset\" role=\"button\">\u91CD\u7F6E</div>\n      <div class=\"cropic-confirm\" id=\"cropicConfirm\" role=\"button\">\u5B8C\u6210</div>\n    </div>\n  ";
@@ -151,8 +151,6 @@
           _this.cropic.style.transform = 'translate(0, 0)';
           // 图片宽度大于图片高度
           setTimeout(function () {
-            var x = 0,
-                y = 0;
             if (_this.img1.width > _this.img1.height) {
               _this.img1.style.height = _this.frame1.clientHeight + 'px';
               _this.img2.style.height = _this.frame1.clientHeight + 'px';
@@ -168,15 +166,11 @@
             if (_this.img1.height > _this.img1.width) {
               _this.translateY = -Math.floor((_this.img1.height - _this.options.cropicHeight) / 2);
               _this.translateX = 0;
-              x = 0;
-              y = -Math.floor((_this.img1.height - _this.options.cropicHeight) / 2);
             } else {
               _this.translateX = -Math.floor((_this.img1.width - _this.options.cropicWidth) / 2);
               _this.translateY = 0;
-              x = -Math.floor((_this.img1.width - _this.options.cropicWidth) / 2);
-              y = 0;
             }
-            _this.setTransform(x, y);
+            _this.setTransform();
           }, 300);
           setTimeout(function () {
             _this.shadyPlot.style.display = 'none';
@@ -201,6 +195,40 @@
             _this.angle = null;
             _this.moveX = null;
             _this.moveY = null;
+
+            var img1 = _this.img1.getBoundingClientRect();
+            var frame1 = _this.frame1.getBoundingClientRect();
+
+            if (img1.top >= frame1.top) {
+              if (_this.scale === 1) {
+                _this.translateY = 0;
+              } else {
+                _this.translateY = (img1.height - _this.img1.height) / 2;
+              }
+            }
+            if (img1.bottom <= frame1.bottom) {
+              if (_this.scale === 1) {
+                _this.translateY = -(_this.img1.height - frame1.height);
+              } else {
+                _this.translateY = -(img1.height - frame1.height - (img1.height - _this.img1.height) / 2);
+              }
+            }
+            if (img1.left >= frame1.left) {
+              if (_this.scale === 1) {
+                _this.translateX = 0;
+              } else {
+                _this.translateX = (img1.width - _this.img1.width) / 2;
+              }
+            }
+            if (img1.right <= frame1.right) {
+              if (_this.scale === 1) {
+                _this.translateX = 0;
+              } else {
+                _this.translateX = -(img1.width - _this.img1.width) / 2;
+              }
+            }
+            _this.setTransform();
+
             setTimeout(function () {
               _this.cropicLayer.style.display = 'block';
               _this.borderLine.setAttribute('class', 'borderLinefadeOut');
@@ -301,14 +329,8 @@
 
     }, {
       key: 'setTransform',
-      value: function setTransform(x, y) {
-        var transform = '';
-        console.log('x', x, y);
-        if (x || y) {
-          transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
-        } else {
-          transform = 'translate(' + this.translateX + 'px, ' + this.translateY + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
-        }
+      value: function setTransform() {
+        var transform = 'translate(' + this.translateX + 'px, ' + this.translateY + 'px) scale(' + this.scale + ') rotate(' + this.rotate + 'deg)';
         this.img1.style.transform = transform;
         this.img2.style.transform = transform;
       }
